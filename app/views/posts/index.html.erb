@@ -1,2 +1,16 @@
 <h1>Our Blog</h1>
-<p> Hello World</p>
+
+<% @posts.each do |post| %>
+<!--  creates link to action-->
+  <h2><%= link_to post.title, post %></h2>
+  <p><%= post.content %></p>
+  <p>
+    <%= link_to "Edit", edit_post_path(post)%> |
+    <!-- JS confirm doesn't work -->
+    <%= link_to "Delete", post, data: { confirm: "Are you sure?"}, :method => :delete %>
+  </p>
+  <hr>
+
+<% end %>
+
+<p><%= link_to "Add a New Post", new_post_path %></p>
